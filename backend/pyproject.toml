@@ -1,0 +1,15 @@
+[project]
+name = "haumex-ai-caller-backend"
+version = "1.0.0"
+description = "Haumex Labs Inc. AI voice receptionist backend"
+requires-python = ">=3.11"
+
+[tool.pytest.ini_options]
+testpaths = ["app/tests"]
+asyncio_mode = "auto"
+asyncio_default_fixture_loop_scope = "function"
+filterwarnings = ["ignore::DeprecationWarning"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
