@@ -1,0 +1,24 @@
+{
+  "name": "haumex-ai-caller-frontend",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Haumex Labs Inc. AI Voice Caller - framework-free TypeScript call interface",
+  "type": "module",
+  "engines": {
+    "node": ">=20.14"
+  },
+  "scripts": {
+    "prestart": "tsc -p tsconfig.json",
+    "start": "node server.mjs",
+    "build": "tsc -p tsconfig.json",
+    "watch": "tsc -p tsconfig.json --watch",
+    "typecheck": "tsc -p tsconfig.json --noEmit && tsc -p tsconfig.test.json --noEmit",
+    "test": "node run-tests.mjs"
+  },
+  "devDependencies": {
+    "@types/jsdom": "^21.1.7",
+    "@types/node": "^22.15.0",
+    "jsdom": "^26.1.0",
+    "typescript": "~5.8.3"
+  }
+}
