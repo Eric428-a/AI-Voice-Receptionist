@@ -1,0 +1,7 @@
+Delete these 5 files from your project (they handled audio, which no longer exists):
+
+backend\app\schemas\audio.py
+backend\app\services\voice\audio_stream.py
+backend\app\services\voice\speech_to_text.py
+backend\app\services\voice\turn_detection.py
+backend\app\utils\audio_utils.py

@@ -1,0 +1,18 @@
+{
+  "version": 1,
+  "embedding_model": "fastembed:BAAI/bge-small-en-v1.5",
+  "documents": {},
+  "last_report": {
+    "started_at": "2026-11-12T09:01:41.436488Z",
+    "finished_at": "2026-11-12T09:01:41.785398Z",
+    "discovered": 0,
+    "added": [],
+    "updated": [],
+    "removed": [],
+    "unchanged": [],
+    "duplicates": [],
+    "failed": {},
+    "total_chunks": 0,
+    "full_reindex": false
+  }
+}
