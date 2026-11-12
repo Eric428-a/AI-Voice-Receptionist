@@ -1,0 +1,64 @@
+/* Page frame: brand bar, central stage, control dock */
+.call-screen {
+  position: relative;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  height: 100%;
+  height: 100dvh;
+  padding: max(20px, env(safe-area-inset-top)) clamp(20px, 4vw, 48px) max(20px, env(safe-area-inset-bottom));
+  isolation: isolate;
+}
+
+/* One quiet light source behind the orb; nothing else decorates the page. */
+.call-screen::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background:
+    radial-gradient(60vmax 45vmax at 50% 46%, rgba(70, 92, 210, 0.22), transparent 60%),
+    radial-gradient(30vmax 22vmax at 50% 46%, rgba(94, 214, 234, 0.08), transparent 70%),
+    var(--night);
+  transition: opacity 0.8s var(--ease-out);
+}
+
+.call-screen[data-state='ended']::before {
+  opacity: 0.55;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.brand__logo {
+  display: block;
+  width: 36px;
+  height: 36px;
+}
+
+.brand__name {
+  font-weight: 500;
+  font-size: var(--step-0);
+  letter-spacing: 0.01em;
+  color: var(--mist);
+}
+
+.stage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(16px, 3vh, 28px);
+  min-height: 0;
+  text-align: center;
+}
+
+.dock {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  padding-bottom: 4px;
+}

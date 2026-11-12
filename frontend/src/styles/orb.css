@@ -1,0 +1,141 @@
+/* The assistant orb. --level (0..1) comes from live audio analysis. */
+.orb-wrap {
+  position: relative;
+  width: calc(var(--orb-size) * 1.62);
+  aspect-ratio: 1;
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+}
+
+.orb {
+  --level: 0;
+  position: relative;
+  width: var(--orb-size);
+  aspect-ratio: 1;
+  display: grid;
+  place-items: center;
+}
+
+.orb__body {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  overflow: hidden;
+  background: radial-gradient(circle at 34% 28%, #d8f8ff 0%, var(--cyan) 20%, #3d63d8 52%, var(--violet) 78%, #221a52 100%);
+  box-shadow:
+    inset -18px -24px 60px rgba(10, 6, 40, 0.65),
+    inset 10px 12px 40px rgba(220, 250, 255, 0.25),
+    0 0 calc(30px + var(--level) * 70px) rgba(94, 214, 234, calc(0.25 + var(--level) * 0.45));
+  transform: scale(calc(1 + var(--level) * 0.12));
+  transition: transform 0.08s linear, filter 0.6s var(--ease-out);
+  animation: orb-breathe 5.5s ease-in-out infinite;
+}
+
+.orb__swirl {
+  position: absolute;
+  inset: -20%;
+  background: conic-gradient(from 0deg, transparent 0deg, rgba(255, 255, 255, 0.28) 60deg, transparent 140deg,
+      rgba(140, 123, 247, 0.4) 220deg, transparent 300deg);
+  mix-blend-mode: screen;
+  opacity: 0.55;
+  animation: orb-spin 14s linear infinite;
+}
+
+.orb__core {
+  position: absolute;
+  top: 18%;
+  left: 24%;
+  width: 26%;
+  height: 20%;
+  border-radius: 50%;
+  background: radial-gradient(closest-side, rgba(255, 255, 255, 0.75), transparent);
+  filter: blur(4px);
+}
+
+.orb__halo {
+  position: absolute;
+  inset: -18%;
+  border-radius: 50%;
+  background: radial-gradient(closest-side, rgba(94, 214, 234, 0.32), rgba(140, 123, 247, 0.12) 60%, transparent);
+  opacity: calc(0.35 + var(--level) * 0.65);
+  filter: blur(16px);
+  transform: scale(calc(0.95 + var(--level) * 0.25));
+  transition: opacity 0.12s linear, transform 0.12s linear;
+  pointer-events: none;
+}
+
+.orb__ring {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  border: 1.5px solid rgba(94, 214, 234, 0.55);
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* ---- states ---------------------------------------------------------------- */
+.orb[data-state='initiating'] .orb__ring {
+  animation: ring-pulse 1.8s var(--ease-out) infinite;
+}
+.orb[data-state='initiating'] .orb__ring--2 {
+  animation-delay: 0.6s;
+}
+.orb[data-state='initiating'] .orb__ring--3 {
+  animation-delay: 1.2s;
+}
+.orb[data-state='initiating'] .orb__body {
+  animation: orb-ring-nudge 2.5s ease-in-out infinite;
+}
+
+.orb[data-state='listening'] .orb__body,
+.orb[data-state='speaking'] .orb__body,
+.orb[data-state='interrupted'] .orb__body {
+  animation: none;
+}
+
+.orb[data-state='listening'] .orb__ring--1 {
+  opacity: calc(0.15 + var(--level) * 0.6);
+  transform: scale(calc(1.08 + var(--level) * 0.12));
+  transition: opacity 0.1s linear, transform 0.1s linear;
+}
+
+.orb.orb--caller-speaking .orb__ring--1 {
+  border-color: rgba(94, 214, 234, 0.85);
+}
+
+.orb[data-state='thinking'] .orb__swirl {
+  animation-duration: 2.6s;
+  opacity: 0.85;
+}
+.orb[data-state='thinking'] .orb__body {
+  filter: saturate(0.85) brightness(0.92);
+  animation: orb-breathe 2.2s ease-in-out infinite;
+}
+.orb[data-state='thinking'] .orb__ring--2 {
+  opacity: 0.6;
+  border-style: dashed;
+  border-color: rgba(140, 123, 247, 0.6);
+  transform: scale(1.12);
+  animation: orb-spin 6s linear infinite;
+}
+
+.orb[data-state='speaking'] .orb__swirl {
+  animation-duration: 6s;
+  opacity: calc(0.55 + var(--level) * 0.4);
+}
+.orb[data-state='speaking'] .orb__body {
+  transform: scale(calc(1 + var(--level) * 0.18));
+}
+
+.orb[data-state='interrupted'] .orb__body {
+  animation: orb-interrupt 0.45s var(--ease-out);
+}
+
+.orb[data-state='ended'] .orb__body {
+  filter: grayscale(0.7) brightness(0.6);
+  animation: none;
+  transform: scale(0.94);
+  transition: filter 0.6s var(--ease-out), transform 0.6s var(--ease-out);
+}

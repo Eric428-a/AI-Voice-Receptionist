@@ -1,0 +1,46 @@
+/* Small screens: transcript becomes a bottom sheet; tighter spacing */
+@media (max-width: 760px) {
+  .brand__name {
+    font-size: 0.9375rem;
+  }
+
+  .connection__label {
+    max-width: 9.5rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .transcript {
+    top: auto;
+    left: 12px;
+    right: 12px;
+    bottom: calc(150px + env(safe-area-inset-bottom));
+    width: auto;
+    max-height: 38vh;
+  }
+
+  .call-screen--transcript .orb-wrap {
+    --orb-size: clamp(120px, 28vmin, 180px);
+  }
+
+  .call-screen--transcript .stage {
+    justify-content: flex-start;
+    padding-top: 2vh;
+  }
+}
+
+@media (max-height: 620px) {
+  :root {
+    --orb-size: clamp(130px, 32vmin, 220px);
+  }
+  .intro__text {
+    display: none;
+  }
+}
+
+@media (min-width: 761px) {
+  .call-screen--transcript .stage {
+    padding-right: min(380px, 36vw);
+  }
+}

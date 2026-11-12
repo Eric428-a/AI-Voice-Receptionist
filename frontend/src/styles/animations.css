@@ -1,0 +1,85 @@
+/* Keyframes */
+@keyframes orb-breathe {
+  0%,
+  100% {
+    transform: scale(calc(0.97 + var(--level) * 0.12));
+  }
+  50% {
+    transform: scale(calc(1.02 + var(--level) * 0.12));
+  }
+}
+
+@keyframes orb-spin {
+  to {
+    rotate: 360deg;
+  }
+}
+
+@keyframes ring-pulse {
+  0% {
+    opacity: 0.75;
+    transform: scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1.55);
+  }
+}
+
+@keyframes orb-ring-nudge {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  8% {
+    transform: scale(1.03) rotate(-2deg);
+  }
+  16% {
+    transform: scale(1.03) rotate(2deg);
+  }
+  24% {
+    transform: scale(1);
+  }
+}
+
+@keyframes orb-interrupt {
+  0% {
+    transform: scale(1.08);
+    filter: brightness(1.35);
+  }
+  100% {
+    transform: scale(1);
+    filter: brightness(1);
+  }
+}
+
+@keyframes drawer-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes dot-blink {
+  50% {
+    opacity: 0.3;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+  .orb__body,
+  .orb__halo {
+    transform: none !important;
+  }
+}

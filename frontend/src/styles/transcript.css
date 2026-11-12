@@ -1,0 +1,72 @@
+/* Optional transcript drawer (right side on desktop, bottom sheet on mobile) */
+.transcript {
+  position: absolute;
+  top: 76px;
+  right: clamp(16px, 3vw, 40px);
+  bottom: 140px;
+  width: min(360px, 34vw);
+  display: flex;
+  flex-direction: column;
+  padding: 18px 18px 6px;
+  border-radius: 18px;
+  background: rgba(13, 20, 48, 0.78);
+  border: 1px solid var(--mist-faint);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  animation: drawer-in 0.32s var(--ease-out);
+}
+
+.transcript__heading {
+  font-size: var(--step-0);
+  font-weight: 500;
+  margin-bottom: 10px;
+}
+
+.transcript__empty {
+  font-size: var(--step--1);
+  color: var(--mist-dim);
+}
+
+.transcript__list {
+  list-style: none;
+  margin: 0;
+  padding: 0 4px 12px 0;
+  overflow-y: auto;
+  display: grid;
+  gap: 14px;
+  align-content: start;
+  scroll-behavior: smooth;
+}
+
+.transcript__entry {
+  display: grid;
+  gap: 2px;
+}
+
+.transcript__who {
+  font-size: 0.75rem;
+  color: var(--mist-dim);
+}
+
+.transcript__text {
+  font-size: 0.9375rem;
+  line-height: 1.5;
+}
+
+.transcript__entry--caller .transcript__who {
+  color: var(--cyan);
+}
+
+.transcript__entry--assistant .transcript__who {
+  color: var(--violet);
+}
+
+.transcript__entry--interrupted .transcript__text::after {
+  content: ' …';
+  color: var(--mist-dim);
+}
+
+/* Caller words still being recognized */
+.transcript__entry--live .transcript__text {
+  color: var(--mist-dim);
+}

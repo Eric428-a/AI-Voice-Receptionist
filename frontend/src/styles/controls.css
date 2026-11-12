@@ -1,0 +1,123 @@
+/* Call controls */
+.controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 92px;
+}
+
+.controls__in-call {
+  display: none;
+  gap: clamp(20px, 6vw, 40px);
+  align-items: flex-start;
+}
+
+.controls[data-mode='in-call'] .controls__in-call {
+  display: flex;
+}
+
+.control {
+  border: 0;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  transition: transform 0.18s var(--ease-out), background-color 0.2s, box-shadow 0.2s, opacity 0.2s;
+}
+
+.control svg {
+  width: 24px;
+  height: 24px;
+  fill: currentColor;
+  flex-shrink: 0;
+}
+
+.control:disabled {
+  cursor: default;
+  opacity: 0.4;
+}
+
+.control:not(:disabled):active {
+  transform: scale(0.95);
+}
+
+/* Primary: the one big action on the idle screen */
+.control--call {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 18px 42px 18px 34px;
+  border-radius: var(--radius-pill);
+  background: var(--cyan);
+  color: var(--ink-on-cyan);
+  font-size: var(--step-1);
+  font-weight: 500;
+  box-shadow: 0 10px 40px -8px rgba(94, 214, 234, 0.55);
+}
+
+.control--call:not(:disabled):hover {
+  background: #79e0f0;
+  box-shadow: 0 12px 48px -6px rgba(94, 214, 234, 0.7);
+}
+
+/* Round in-call buttons with a label underneath */
+.control--round,
+.control--end {
+  display: grid;
+  justify-items: center;
+  gap: 8px;
+  background: none;
+  padding: 0;
+  color: var(--mist);
+}
+
+.control--round::before,
+.control--end::before {
+  content: none;
+}
+
+.control--round svg,
+.control--end svg {
+  box-sizing: content-box;
+  padding: 18px;
+  border-radius: 50%;
+}
+
+.control--round svg {
+  background: rgba(199, 209, 234, 0.1);
+  border: 1px solid var(--mist-faint);
+}
+
+.control--round:not(:disabled):hover svg {
+  background: rgba(199, 209, 234, 0.18);
+}
+
+.control--active svg {
+  background: var(--mist) !important;
+  color: var(--night);
+}
+
+.control--end svg {
+  width: 28px;
+  height: 28px;
+  padding: 20px;
+  background: var(--coral);
+  color: #fff;
+  box-shadow: 0 10px 34px -10px rgba(240, 107, 126, 0.75);
+}
+
+.control--end:not(:disabled):hover svg {
+  background: #f4828f;
+}
+
+.control__label {
+  font-size: var(--step--1);
+  color: var(--mist-dim);
+}
+
+.control:focus-visible {
+  box-shadow: none;
+}
+.control--call:focus-visible,
+.control--round:focus-visible svg,
+.control--end:focus-visible svg {
+  box-shadow: var(--focus);
+}
