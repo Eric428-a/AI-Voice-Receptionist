@@ -1,8 +1,28 @@
+
 [project]
-name = "haumex-ai-caller-backend"
+name = "ai-voice-receptionist-backend"
 version = "1.0.0"
-description = "Haumex Labs Inc. AI voice receptionist backend"
-requires-python = ">=3.11"
+description = "AI Voice Receptionist Backend"
+requires-python = ">=3.12"
+dependencies = [
+    "fastapi",
+    "uvicorn[standard]",
+    "pydantic",
+    "pydantic-settings",
+    "httpx",
+    "websockets",
+    "python-multipart",
+    "numpy",
+    "pypdf",
+    "chromadb",
+    "fastembed",
+]
+
+[dependency-groups]
+dev = [
+    "pytest",
+    "pytest-asyncio",
+]
 
 [tool.pytest.ini_options]
 testpaths = ["app/tests"]
@@ -12,4 +32,4 @@ filterwarnings = ["ignore::DeprecationWarning"]
 
 [tool.ruff]
 line-length = 100
-target-version = "py311"
+target-version = "py312"
