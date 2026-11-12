@@ -3,6 +3,6 @@
   "outputDirectory": ".",
   "rewrites": [
     { "source": "/assets/(.*)", "destination": "/public/assets/$1" },
-    { "source": "/api/(.*)", "destination": "https://YOUR-BACKEND-URL/api/$1" }
+    { "source": "/api/(.*)", "destination": "http://ai-voice-receptionist-lac.vercel.app//api/$1" }
   ]
 }
