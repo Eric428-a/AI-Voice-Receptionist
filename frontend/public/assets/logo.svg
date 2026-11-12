@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-labelledby="t">
+  <title id="t">Haumex Labs Inc.</title>
+  <defs>
+    <linearGradient id="g" x1="8" y1="8" x2="56" y2="56" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#5ED6EA"/>
+      <stop offset="1" stop-color="#8C7BF7"/>
+    </linearGradient>
+  </defs>
+  <circle cx="32" cy="32" r="27" fill="none" stroke="url(#g)" stroke-width="2.5" stroke-dasharray="132 38" transform="rotate(-62 32 32)"/>
+  <path d="M22 19v26M42 19v26M22 32h20" fill="none" stroke="url(#g)" stroke-width="5" stroke-linecap="round"/>
+  <circle cx="51.5" cy="15" r="3" fill="#5ED6EA"/>
+</svg>
