@@ -1,8 +1,15 @@
+
 {
   "buildCommand": "npm run build",
   "outputDirectory": ".",
   "rewrites": [
-    { "source": "/assets/(.*)", "destination": "/public/assets/$1" },
-    { "source": "/api/(.*)", "destination": "http://ai-voice-receptionist-lac.vercel.app//api/$1" }
+    {
+      "source": "/assets/(.*)",
+      "destination": "/public/assets/$1"
+    },
+    {
+      "source": "/api/(.*)",
+      "destination": "https://ai-voice-receptionist-lac.vercel.app/api/$1"
+    }
   ]
 }
